@@ -46,8 +46,11 @@
          var colorRd = new THREE.Color(0xAA6666);
          var colorGd = new THREE.Color(0x66AA66);
          var colorBd = new THREE.Color(0x6666AA);
-         var grados = 90;                          ////AGREGO UNA VARIABLE QUE SERA LOS GRADOS
-         var angulo = -(grados*(Math.PI))/180;     ////LAS CONVIERTO A RADIANES
+         var grado1 = 90;                          ////AGREGO UNA VARIABLE QUE SERA LOS GRADOS
+         var angulo1 = -(grado1*(Math.PI))/180;     ////LAS CONVIERTO A RADIANES
+         var grado2 = 9.47*2;                          ////AGREGO UNA VARIABLE QUE SERA LOS GRADOS
+         var angulo2 = -(grado2*(Math.PI))/180;     ////LAS CONVIERTO A RADIANES
+
 
          //CREAR LAS GRILLAS PARA EL ESCENARIO
          var axesHelper = new THREE.AxesHelper(size);
@@ -73,14 +76,20 @@
 
          //CREAR LOS OBJETOS
          cone = new THREE.Mesh( geometry, material );
-         var matrizRotar = rotar(angulo);       ////CREO UNA NUEVA MATRIZ DE ROTACION
+         var matrizRotar = rotar(angulo1);       ////CREO UNA NUEVA MATRIZ DE ROTACION
          cone.applyMatrix(matrizRotar);         ////LE APLICO LA MATRIZ AL CONO
          
          var matrizTrasladar = trasladar(0.5 , 0 , 0); ////CREO UNA NUEVA MATRIZ DE TRASLACION
          cone.applyMatrix(matrizTrasladar);     ////LE APLICO LA MATRIZ AL CONO
 
-         var matrizEscala = escalar(3 , 1 , 1);
-         cone.applyMatrix(matrizEscala);
+         var matrizEscala = escalar(3 , 1 , 1); ////CREO UNA NUEVA MATRIZ DE ESCALA
+         cone.applyMatrix(matrizEscala); ////LE APLICO LA MATRIZ AL CONO
+
+         var matrizTrasladar = trasladar(0 , 1 , 0); ////CREO UNA NUEVA MATRIZ DE TRASLACION
+         cone.applyMatrix(matrizTrasladar);     ////LE APLICO LA MATRIZ AL CONO
+
+         var matrizRotar = rotar(angulo2);       ////CREO OTRA NUEVA MATRIZ DE ROTACION
+         cone.applyMatrix(matrizRotar);         ////LE APLICO LA MATRIZ AL CONO
 
          //AGREGAR A LA ESCENA
          scene.add(gridHelperXZ);
@@ -91,7 +100,7 @@
 
          //MOVER LA CÁMARA
          camera.position.x = 5;
-         camera.position.y = 10;
+         camera.position.y = 5;
          camera.position.z = 10;
          camera.lookAt(origin);
       }
