@@ -79,6 +79,9 @@
          var matrizTrasladar = trasladar(0.5 , 0 , 0); ////CREO UNA NUEVA MATRIZ DE TRASLACION
          cone.applyMatrix(matrizTrasladar);     ////LE APLICO LA MATRIZ AL CONO
 
+         var matrizEscala = escalar(3 , 1 , 1);
+         cone.applyMatrix(matrizEscala);
+
          //AGREGAR A LA ESCENA
          scene.add(gridHelperXZ);
          scene.add(arrowX);
@@ -121,22 +124,36 @@
          )
          return r;
       }
-
       
       //CREO LA MATRIZ DE TRASLACION
       function trasladar(x,y,z){
-               var tx = x; 
-               var ty = y;
-               var tz = z;
-               t = new THREE.Matrix4();
-               t.set(
-                  1  , 0 , 0  , tx,
-                  0  , 1 , 0  , ty,
-                  0  , 0 , 1  , tz,           
-                  0  , 0 , 0  , 1  
-               )
-               return t;
-            }
+         var tx = x; 
+         var ty = y;
+         var tz = z;
+         t = new THREE.Matrix4();
+         t.set(
+            1  , 0 , 0  , tx,
+            0  , 1 , 0  , ty,
+            0  , 0 , 1  , tz,           
+            0  , 0 , 0  , 1  
+         )
+         return t;
+      }
+
+      //CREO LA MATRIZ DE ESCALA
+      function escalar(x,y,z){
+         var sx = x; 
+         var sy = y;
+         var sz = z;
+         e = new THREE.Matrix4();
+         e.set(
+            sx , 0  , 0  , 0,
+            0  , sy , 0  , 0,
+            0  , 0  , sz , 0,           
+            0  , 0  , 0  , 1  
+         )
+         return e;
+      }
 
    </script>
 </body>
